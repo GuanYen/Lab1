@@ -32,11 +32,19 @@ output:
   
 ## 3.4
   library(dplyr)
-
-  ddt %>% filter(SPECIES == "LMBASS" & WEIGHT > 800)
-
+  
+  bass <- ddt %>% filter(SPECIES=="LMBASS")
+  
+  vector <- bass %>% filter(WEIGHT > 800)
+  
+  vector
+  
 ## 3.5
-  ddt %>% filter(RIVER == "SCM" & DDT > 4)
+  scm <- ddt %>% filter(RIVER=="SCM")
+  
+  vector2 <- scm %>% filter(DDT > 4)
+
+  vector2
 
 # Task 4
 
@@ -84,4 +92,26 @@ output:
   pie(fishT)
   
   pie(riverT, col=1:4)
+  
+# Task 7
+  boxplot(DDT~SPECIES, col="Blue", data=ddt)
+
+  boxplot(WEIGHT~SPECIES, col="Red", data=ddt)
+  
+  boxplot(LENGTH~SPECIES, col="Blue", data=ddt)
+  
+# Task 8
+  rivcol=with(ddt, ifelse(RIVER=="FCM","Red",
+                      ifelse(RIVER=="LCM","Blue",
+                          ifelse(RIVER=="SCM","Green","Black"))))
+
+  coplot(LENGTH~WEIGHT|RIVER, data=ddt, col=rivcol)
+
+  fishcol=with(ddt,ifelse(SPECIES=="CCATFISH","Red",
+                      ifelse(SPECIES=="SMBUFFALO","Blue","Green")))
+
+  coplot(DDT~WEIGHT|SPECIES, data=ddt, col=fishcol)
+
+# Task 9
+  plot(LENGTH~WEIGHT, col=fishcol, ddt)
 
