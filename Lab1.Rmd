@@ -1,0 +1,87 @@
+---
+title: "Lab1"
+author: "Jason Chen"
+date: "2024-08-23"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+# Task 1
+  getwd()
+
+# Task 2
+  ddt <- read.csv("DDT-1.csv")
+  
+  head(ddt)
+
+# Task 3
+## 3.1
+  summary(ddt)
+  
+  Qualitative: RIVER, SPECIES
+
+## 3.2
+  Quantitative: MILE, LENGTH, WEIGHT, DDT
+  
+## 3.3
+  with(ddt, unique(SPECIES))
+
+  There are 3 SPECIES in the ddt data set
+  
+## 3.4
+  library(dplyr)
+
+  ddt %>% filter(SPECIES == "LMBASS" & WEIGHT > 800)
+
+## 3.5
+  ddt %>% filter(RIVER == "SCM" & DDT > 4)
+
+# Task 4
+
+## 4.1
+  mean(with(ddt, LENGTH))
+  
+  Mean LENGTH = 42.8125
+  
+## 4.2
+  sd(with(ddt, WEIGHT))
+
+  Standard Deviation of WEIGHT = 376.5461
+  
+## 4.3
+  library(ggplot2)
+
+  plot(WEIGHT~LENGTH, ddt)
+
+  plot(LENGTH~WEIGHT, ddt)
+
+  Answer = 0
+
+## 4.4
+  v=1:20
+  
+  v
+  
+  v/20
+  
+  Last value of v/20 is 1
+  
+# Task 5
+  riverT=with(ddt, table(RIVER))
+  riverT
+  
+  barplot(riverT, col=1:4)
+
+  crossT = with(ddt, table(SPECIES, RIVER))
+  crossT
+  
+  barplot(crossT)
+  
+# Task 6
+  fishT = with(ddt, table(SPECIES))
+  pie(fishT)
+  
+  pie(riverT, col=1:4)
+
