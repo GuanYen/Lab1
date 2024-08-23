@@ -1514,11 +1514,15 @@ border-radius: 0px;
 <div id="section-3" class="section level2">
 <h2>3.4</h2>
 <p>library(dplyr)</p>
-<p>ddt %&gt;% filter(SPECIES == “LMBASS” &amp; WEIGHT &gt; 800)</p>
+<p>bass &lt;- ddt %&gt;% filter(SPECIES==“LMBASS”)</p>
+<p>vector &lt;- bass %&gt;% filter(WEIGHT &gt; 800)</p>
+<p>vector</p>
 </div>
 <div id="section-4" class="section level2">
 <h2>3.5</h2>
-<p>ddt %&gt;% filter(RIVER == “SCM” &amp; DDT &gt; 4)</p>
+<p>scm &lt;- ddt %&gt;% filter(RIVER==“SCM”)</p>
+<p>vector2 &lt;- scm %&gt;% filter(DDT &gt; 4)</p>
+<p>vector2</p>
 </div>
 </div>
 <div id="task-4" class="section level1">
@@ -1577,6 +1581,24 @@ ifelse(SPECIES==“SMBUFFALO”,“Blue”,“Green”)))</p>
 </div>
 <div id="task-9" class="section level1">
 <h1>Task 9</h1>
+<div id="boxplot" class="section level2">
+<h2>Boxplot</h2>
+<p>b = ggplot(ddt, aes(x = SPECIES, y = WEIGHT)) + geom_boxplot(aes(
+fill = RIVER)) + labs(title=“Jason Chen”)</p>
+<p>b</p>
+</div>
+<div id="violinplot" class="section level2">
+<h2>Violinplot</h2>
+<p>v = ggplot(ddt, aes(x = RIVER, y = LENGTH)) + geom_violin(aes( fill =
+SPECIES)) + labs(title=“Jason Chen”)</p>
+<p>v</p>
+</div>
+<div id="scatterpot" class="section level2">
+<h2>Scatterpot</h2>
+<p>g = ggplot(ddt, aes(x = WEIGHT, y = LENGTH )) + geom_point(aes( color
+= SPECIES)) + labs(title=“Jason Chen”)</p>
+<p>g</p>
+</div>
 </div>
 
 

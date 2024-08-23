@@ -113,5 +113,22 @@ output:
   coplot(DDT~WEIGHT|SPECIES, data=ddt, col=fishcol)
 
 # Task 9
-  plot(LENGTH~WEIGHT, col=fishcol, ddt)
+
+## Boxplot
+  b = ggplot(ddt, aes(x = SPECIES, y = WEIGHT)) + 
+  geom_boxplot(aes( fill = RIVER)) + labs(title="Jason Chen")
+  
+  b
+  
+## Violinplot
+  v = ggplot(ddt, aes(x = RIVER, y = LENGTH)) +
+  geom_violin(aes( fill = SPECIES)) + labs(title="Jason Chen")
+  
+  v
+
+## Scatterpot
+  g = ggplot(ddt, aes(x = WEIGHT, y = LENGTH )) + 
+  geom_point(aes( color = SPECIES)) + labs(title="Jason Chen")
+
+  g
 
